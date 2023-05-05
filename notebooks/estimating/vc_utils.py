@@ -11,8 +11,8 @@ def dat_split(input_dat, id_gebs):
 
 from sklearn.model_selection import train_test_split
 
-def train_test_split_by_commune(input_df,sel_feats, target_var,rseed):
-    gmd_train, gmd_test = train_test_split(input_df.GMDNAME.unique(), test_size=.1, random_state=rseed)
+def train_test_split_by_commune(input_df,sel_feats, target_var,rseed, test_size = .3):
+    gmd_train, gmd_test = train_test_split(input_df.GMDNAME.unique(), test_size=test_size, random_state=rseed)
     #     dat.query('GMDNAME in @gmd_train').shape, dat.query('GMDNAME in @gmd_test')
     train_gebs = input_df.query('GMDNAME in @gmd_train')['ID_Geb'].unique()
     test_gebs  = input_df.query('GMDNAME in @gmd_test')['ID_Geb'].unique()
